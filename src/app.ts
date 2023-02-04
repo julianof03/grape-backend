@@ -2,7 +2,12 @@ import "reflect-metadata";
 import "express-async-errors";
 import express, { Express } from "express";
 import cors from "cors";
-import { loadEnv, connectDb, disconnectDB } from "./config";
+import { loadEnv, connectDb, disconnectDB } from "@/config";
+import {
+  usersRouter,
+  authenticationRouter,
+  productRouter
+} from "@/routers";
 
 loadEnv();
 
@@ -11,6 +16,9 @@ app
   .use(cors())
   .use(express.json())
   .get("/health", (_req, res) => res.send("OK!"))
+  .use("/users", usersRouter)
+  .use("/auth", authenticationRouter)
+  .use("/product", productRouter)
 
 export function init(): Promise<Express> {
   connectDb();
