@@ -38,14 +38,14 @@ model Product {
 }
 
 model Ingredient {
-  id            Int      @id @default(autoincrement())
-  userId        Int
-  productId     Int
-  ingedientName String   @db.VarChar(255)
-  amount        Int
-  mesure        String   @db.VarChar(255)
-  price         String   @db.VarChar(255)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id             Int      @id @default(autoincrement())
+  userId         Int
+  productId      Int
+  ingredientName String   @db.VarChar(255)
+  amount         Int
+  mesure         String   @db.VarChar(255)
+  price          String   @db.VarChar(255)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 

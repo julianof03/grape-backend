@@ -6,9 +6,17 @@ async function create(data: Prisma.ProductCreateInput) {
     data,
   });
 }
+async function list(userId: number) {
+  return prisma.product.findMany({
+    where:{
+      userId
+    }
+  });
+}
 
 const productRepository = {
   create,
+  list,
 };
 
 export default productRepository;

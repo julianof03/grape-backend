@@ -25,7 +25,7 @@ CREATE TABLE "Session" (
 CREATE TABLE "Product" (
     "id" SERIAL NOT NULL,
     "userId" INTEGER NOT NULL,
-    "porductName" VARCHAR(255) NOT NULL,
+    "productName" VARCHAR(255) NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -37,7 +37,7 @@ CREATE TABLE "Ingredient" (
     "id" SERIAL NOT NULL,
     "userId" INTEGER NOT NULL,
     "productId" INTEGER NOT NULL,
-    "ingedientName" VARCHAR(255) NOT NULL,
+    "ingredientName" VARCHAR(255) NOT NULL,
     "amount" INTEGER NOT NULL,
     "mesure" VARCHAR(255) NOT NULL,
     "price" VARCHAR(255) NOT NULL,

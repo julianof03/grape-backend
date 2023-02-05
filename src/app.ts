@@ -6,7 +6,8 @@ import { loadEnv, connectDb, disconnectDB } from "@/config";
 import {
   usersRouter,
   authenticationRouter,
-  productRouter
+  productRouter,
+  ingredientRouter,
 } from "@/routers";
 
 loadEnv();
@@ -19,6 +20,7 @@ app
   .use("/users", usersRouter)
   .use("/auth", authenticationRouter)
   .use("/product", productRouter)
+  .use("/ingredient", ingredientRouter)
 
 export function init(): Promise<Express> {
   connectDb();

@@ -2,13 +2,21 @@ import { prisma } from "@/config";
 import { Prisma } from "@prisma/client";
 
 async function create(data: Prisma.IngredientCreateInput) {
+  console.log("vou chegar aqui");
   return prisma.ingredient.create({
     data,
   });
 }
-
-const sessionRepository = {
+async function listIngredient(productId: number) {
+  return prisma.ingredient.findMany({
+    where:{
+      productId
+    }
+  });
+}
+const ingredientRepository = {
   create,
+  listIngredient,
 };
 
-export default sessionRepository;
+export default ingredientRepository;
