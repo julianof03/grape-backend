@@ -1,11 +1,11 @@
 import { ingredientPost } from "@/controllers";
-import { authenticateToken } from "@/middlewares";
+import { authenticateToken, validateIngredient } from "@/middlewares";
 import { Router } from "express";
 
 const ingredientRouter = Router();
 
-ingredientRouter
+ingredientRouter 
 .all("/*", authenticateToken)
-.post("", ingredientPost);
+.post("", validateIngredient, ingredientPost);
 
 export { ingredientRouter };

@@ -2,17 +2,14 @@ import productService from "@/services/product-service";
 import { Response } from "express";
 import { AuthenticatedRequest } from "@/middlewares";
 import httpStatus from "http-status";
-import { Ingredient, Product } from "@prisma/client";
+import { Ingredient } from "@prisma/client";
 
 async function ProductPost(req: AuthenticatedRequest, res: Response) {
-  const { ProductName } = req.body;
+  const { productName, productValue } = req.body;
   const { userId } = req;
-  const productName = ProductName;
 
-  console.log(userId);
   try {
-    console.log(productName);
-    const result = await productService.createProducts({ productName, userId });
+    const result = await productService.createProducts({ productName, userId, productValue });
 
     return res.status(httpStatus.OK).send(result);
   } catch (error) {
@@ -25,7 +22,6 @@ async function GetProduct(req: AuthenticatedRequest, res: Response) {
   try {
     const result : IngredientResult[] = await productService.GetProducts(userId);
     const newResult = await SearchArray(result);
-
     return res.status(httpStatus.OK).send(newResult);
   } catch (error) {
     return res.status(httpStatus.UNAUTHORIZED).send({});
@@ -33,10 +29,10 @@ async function GetProduct(req: AuthenticatedRequest, res: Response) {
 }
 
 async function SearchArray(result : IngredientResult[]) {
-  const auxArray = [];
+  const auxArray = result;
   for(let i = 0; i < result.length; i++){
     const newresult = await productService.getEveryIngredient(result[i]);
-    auxArray.push( [result[i], newresult[i]]);
+    auxArray[i].ingredients = newresult;
   }
   return auxArray;
 }
@@ -45,6 +41,7 @@ export type IngredientResult = {
   id: number
   userId: number
   productName: string
+  ingredients?: Ingredient[]
   createdAt: Date
   updatedAt: Date
 }

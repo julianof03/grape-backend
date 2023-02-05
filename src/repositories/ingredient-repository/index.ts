@@ -2,7 +2,6 @@ import { prisma } from "@/config";
 import { Prisma } from "@prisma/client";
 
 async function create(data: Prisma.IngredientCreateInput) {
-  console.log("vou chegar aqui");
   return prisma.ingredient.create({
     data,
   });

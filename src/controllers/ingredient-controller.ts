@@ -8,10 +8,8 @@ export async function ingredientPost(req: AuthenticatedRequest, res: Response) {
   const { userId } = req;
   try {
     const result = await ingredientService.createIngredient({userId, ingredientName, price, productId, amount, mesure});
-    console.log("voltei");
     return res.status(httpStatus.OK).send(result);
   } catch (error) {
-    console.log(error);
     return res.status(httpStatus.UNAUTHORIZED).send({});
   }
 }

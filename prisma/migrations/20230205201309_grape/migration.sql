@@ -26,6 +26,7 @@ CREATE TABLE "Product" (
     "id" SERIAL NOT NULL,
     "userId" INTEGER NOT NULL,
     "productName" VARCHAR(255) NOT NULL,
+    "productValue" VARCHAR(255) NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 

@@ -33,6 +33,7 @@ model Product {
   id            Int      @id @default(autoincrement())
   userId        Int
   productName   String   @db.VarChar(255) 
+  productValue  String   @db.VarChar(255) 
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }

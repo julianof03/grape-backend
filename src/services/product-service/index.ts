@@ -4,10 +4,9 @@ import ingredientRepository from "@/repositories/ingredient-repository";
 import { Product, Users } from "@prisma/client";
 import { IngredientResult } from "@/controllers";
 
-export async function createProducts({ userId, productName }: CreateProductsParams): Promise<Product> {
-
+export async function createProducts({ userId, productName, productValue }: CreateProductsParams): Promise<Product> {
   return productRepository.create({
-    userId, productName 
+    userId, productName, productValue
   });
 }
 export async function GetProducts( userId:number ) {
@@ -20,7 +19,7 @@ export async function getEveryIngredient( result: IngredientResult ) {
 
 
 
-export type CreateProductsParams = Pick<Product, "userId" | "productName">;
+export type CreateProductsParams = Pick<Product, "userId" | "productName" | "productValue">;
 export type getProductsParams = Pick<Product, "userId">;
 const productService = {
   createProducts,

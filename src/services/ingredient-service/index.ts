@@ -1,10 +1,9 @@
 import ingredientRepository from "@/repositories/ingredient-repository";
-import { Ingredient, Product, Users } from "@prisma/client";
+import { Ingredient } from "@prisma/client";
 
 export async function createIngredient({ 
   userId, ingredientName, price, 
   productId, amount, mesure }: CreateIngredientParams): Promise<Ingredient> {
-    console.log("cheguei aqui");
   return ingredientRepository.create({
     userId, ingredientName, price, productId, amount, mesure
   });
