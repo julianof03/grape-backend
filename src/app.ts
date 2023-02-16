@@ -6,7 +6,7 @@ import { loadEnv, connectDb, disconnectDB } from "@/config";
 import {
   usersRouter,
   authenticationRouter,
-  productRouter, 
+  productRouter,  
   ingredientRouter,
 } from "@/routers";
 
